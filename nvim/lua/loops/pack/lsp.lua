@@ -22,6 +22,7 @@ vim.lsp.enable({
 	"basedpyright",
 	"ruff",
 	"vtsls",
+	"clangd",
 })
 
 -- Completion
@@ -63,6 +64,8 @@ require("conform").setup({
 		javascriptreact = { "oxfmt" },
 		typescriptreact = { "oxfmt" },
 		python = { "ruff_fix", "ruff_organize_imports", "ruff_format" },
+		c = { "clang_format" },
+		cpp = { "clang_format" },
 	},
 	format_on_save = {
 		-- These options will be passed to conform.format()
