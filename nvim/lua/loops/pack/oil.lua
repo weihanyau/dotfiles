@@ -12,7 +12,7 @@ require("oil").setup({
 		["<C-v>"] = { "actions.select", opts = { vertical = true } },
 		["<C-h>"] = false,
 		-- Copy absolute path of the entry under the cursor to the system clipboard
-		["YP"] = {
+		["<leader>P"] = {
 			desc = "Copy absolute path to system clipboard",
 			callback = function()
 				local oil = require("oil")
@@ -29,7 +29,7 @@ require("oil").setup({
 		},
 
 		-- Copy relative path of the entry under the cursor to the system clipboard
-		["yp"] = {
+		["<leader>p"] = {
 			desc = "Copy relative path to system clipboard",
 			callback = function()
 				local oil = require("oil")
@@ -46,7 +46,7 @@ require("oil").setup({
 			end,
 		},
 		-- Copy the absolute path of the current directory to the system clipboard
-		["YD"] = {
+		["<leader>D"] = {
 			desc = "Copy current directory absolute path to system clipboard",
 			callback = function()
 				local dir = require("oil").get_current_dir()
@@ -60,7 +60,7 @@ require("oil").setup({
 		},
 
 		-- Copy the relative path of the current directory to the system clipboard
-		["yd"] = {
+		["<leader>d"] = {
 			desc = "Copy current directory relative path to system clipboard",
 			callback = function()
 				local dir = require("oil").get_current_dir()
