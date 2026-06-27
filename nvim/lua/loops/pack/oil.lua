@@ -7,7 +7,7 @@ require("oil").setup({
 		show_hidden = true,
 	},
 	keymaps = {
-		["<C-c>"] = "<Nop>",
+		["<C-c>"] = { "<Nop>", mode = "n" },
 		["<C-s>"] = { "actions.select", opts = { horizontal = true } },
 		["<C-v>"] = { "actions.select", opts = { vertical = true } },
 		["<C-h>"] = false,
