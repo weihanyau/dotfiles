@@ -23,6 +23,8 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("v", "<leader>s", [["hy:%s/<C-r>h/<C-r>h/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+vim.keymap.set("n", "<leader>aa", "<cmd>!as % -o a.o && ld a.o -o a.program<CR>", { silent = true })
+vim.keymap.set("n", "<leader>as", "<cmd>!as % -o a.o && ld -shared a.o -o a.so<CR>", { silent = true })
 
 vim.keymap.set("n", "<leader>dl", function()
 	vim.diagnostic.setloclist({ open = true })
@@ -43,10 +45,10 @@ vim.keymap.set("n", "<leader>cs", function()
 	})
 end, { desc = "Fix All" })
 
-vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(event)
-    local opts = { buffer = event.buf }
-    -- Map 'gd' to perform semantic LSP definition jumps project-wide
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-  end,
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(event)
+		local opts = { buffer = event.buf }
+		-- Map 'gd' to perform semantic LSP definition jumps project-wide
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+	end,
 })

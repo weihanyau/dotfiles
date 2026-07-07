@@ -23,6 +23,7 @@ vim.lsp.enable({
 	"ruff",
 	"vtsls",
 	"clangd",
+	"asm_lsp",
 })
 
 -- Completion
@@ -66,6 +67,7 @@ require("conform").setup({
 		python = { "ruff_fix", "ruff_organize_imports", "ruff_format" },
 		c = { "clang_format" },
 		cpp = { "clang_format" },
+		asm = { "asmfmt" },
 	},
 	format_on_save = {
 		-- These options will be passed to conform.format()
