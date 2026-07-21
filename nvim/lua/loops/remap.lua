@@ -52,3 +52,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 	end,
 })
+
+vim.keymap.set("n", "<leader>bc", '<cmd>%bd!|e#|normal `"<CR>zz', { desc = "Close all buffers except current" })
