@@ -3,6 +3,7 @@ vim.pack.add({
 })
 
 require("oil").setup({
+	delete_to_trash = false,
 	view_options = {
 		show_hidden = true,
 	},
@@ -76,3 +77,24 @@ require("oil").setup({
 		},
 	},
 })
+
+-- Fix for oil deleting directories causing malloc error
+-- Issues: https://github.com/stevearc/oil.nvim/issues/719
+local oil_fs = require("oil.fs")
+local original_recursive_delete = oil_fs.recursive_delete
+
+oil_fs.recursive_delete = function(entry_type, path, cb)
+	if entry_type == "directory" then
+		vim.fn.jobstart({ "rm", "-rf", path }, {
+			on_exit = function(_, code)
+				if code == 0 then
+					cb(nil)
+				else
+					cb("rm -rf failed on " .. path)
+				end
+			end,
+		})
+	else
+		original_recursive_delete(entry_type, path, cb)
+	end
+end
