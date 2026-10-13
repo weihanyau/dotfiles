@@ -1,0 +1,81 @@
+let mapleader=" "
+nnoremap <Space> <Nop>
+
+" Options (set.lua)
+set number relativenumber
+set scrolloff=8
+set incsearch
+set nohlsearch
+set nowrap
+
+" Extensions
+set surround
+set NERDTree
+
+" Core remaps (remap.lua)
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+nnoremap J mzJ`z
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap =ap ma=ap'a
+xnoremap <leader>p "_dP
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>Y "+Y
+inoremap <C-c> <Esc>
+nnoremap Q <Nop>
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+vnoremap <leader>s "hy:%s/<C-r>h/<C-r>h/gI<Left><Left><Left>
+nnoremap <leader>v :vsplit<CR>
+
+" Oil
+nnoremap <leader>fm :NERDTreeFind<CR>
+
+" LSP / diagnostics
+nmap gd <Action>(GotoDeclaration)
+nmap <leader>dl <Action>(ActivateProblemsViewToolWindow)
+nmap <leader>ds <Action>(ShowErrorDescription)
+nmap <leader>oi <Action>(OptimizeImports)
+nmap <leader>cs <Action>(CodeCleanup)
+nmap <leader>bc <Action>(CloseAllEditorsButActive)
+
+" fzf-lua
+nmap <leader>ff <Action>(GotoFile)
+nmap <leader>fg <Action>(FindInPath)
+nmap <leader>fb <Action>(RecentFiles)
+nmap <leader>fh <Action>(GotoAction)
+
+" Harpoon (Harpooner plugin)
+nmap <leader>ha <Action>(HarpoonerAddFile)
+nmap <leader>hh <Action>(HarpoonerToggleQuickMenu)
+nmap <leader>1 <Action>(HarpoonerOpenFile0)
+nmap <leader>2 <Action>(HarpoonerOpenFile1)
+nmap <leader>3 <Action>(HarpoonerOpenFile2)
+nmap <leader>4 <Action>(HarpoonerOpenFile3)
+nmap <leader>hc <Action>(HarpoonerClearMenu)
+nmap <C-n> <Action>(HarpoonerNextFileAction)
+nmap <C-p> <Action>(HarpoonerPreviousFileAction)
+
+" Fugitive / Diffview
+nmap <leader>gs <Action>(ActivateCommitToolWindow)
+nmap <leader>gh <Action>(Diff.ApplyLeftSide)
+nmap <leader>gl <Action>(Diff.ApplyRightSide)
+nmap <leader>dv <Action>(Compare.SameVersion)
+nmap <leader>dt <Action>(ActivateCommitToolWindow)
+nmap <leader>dr <Action>(Git.CompareWithBranch)
+
+" Undotree
+nmap <leader>u <Action>(LocalHistory.ShowHistory)
+
+" neocodeium: IDE inline completion
+imap <A-f> <Action>(InsertInlineCompletionAction)
+imap <A-e> <Action>(CallInlineCompletionAction)
+
+sethandler <C-c> a:vim
+sethandler <C-d> a:vim
+sethandler <C-u> a:vim
+sethandler <C-n> a:vim
+sethandler <C-p> a:vim
